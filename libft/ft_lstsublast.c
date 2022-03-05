@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*   ft_lstsublast.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 14:38:02 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/04 11:04:05 by coskelet         ###   ########.fr       */
+/*   Created: 2022/03/02 14:13:27 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/02 14:32:17 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_nbr(void *n)
+t_list	*ft_lstsublast(t_list *lst)
 {
-	ft_putnbr_fd((int)n, 0);
-	write(0, " ", 1);
-}
+	t_list	*prev;
 
+	while (lst && lst->next)
+	{
+		prev = lst;
+		lst = lst->next;
+	}
+	return (prev);
+}

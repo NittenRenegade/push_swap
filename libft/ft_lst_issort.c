@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_move.c                                        :+:      :+:    :+:   */
+/*   ft_lstissort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 17:26:40 by coskelet          #+#    #+#             */
-/*   Updated: 2022/02/27 18:07:15 by coskelet         ###   ########.fr       */
+/*   Created: 2022/02/26 09:36:58 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/05 14:30:35 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_list **l, t_list **f)
+int	ft_lst_issort(t_list *lst, short asc)
 {
-	t_list	*tmp;
-
-	tmp = *l;
-	*l = *f;
-	if (NULL != *f)
-		*f = (*f)->next;
-	(*l)->next = tmp;
-}
-
-
-void	push_a(t_stacks *st)
-{
-	push(&st->a, &st->b);
-}
-
-void	push_b(t_stacks *st)
-{
-	push(&st->b, &st->a);
+	if (!lst)
+		return (1);
+	while (lst->next)
+	{
+		if (asc && (int)lst->content > (int)lst->next->content)
+			return (0);
+		else if (!asc && (int)lst->content < (int)lst->next->content)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
 }

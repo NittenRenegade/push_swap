@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter_reverse.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 14:38:02 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/04 11:04:05 by coskelet         ###   ########.fr       */
+/*   Created: 2022/03/05 13:16:36 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/05 13:29:00 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_nbr(void *n)
+void	ft_lstiter_reverse(t_list *lst, void (*f)(void *))
 {
-	ft_putnbr_fd((int)n, 0);
-	write(0, " ", 1);
+	if (!lst)
+		return ;
+	if (lst->next)
+		ft_lstiter_reverse(lst->next, f);
+	(*f)(lst->content);
+	return ;
 }
-

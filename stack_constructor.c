@@ -6,7 +6,7 @@
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:50:06 by coskelet          #+#    #+#             */
-/*   Updated: 2022/02/27 17:06:23 by coskelet         ###   ########.fr       */
+/*   Updated: 2022/03/05 10:28:00 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static t_stacks	*init_stacks(void);
 static void		init_stacks_funcs(t_stacks **st);
+static void 	init_stacks_median(t_stacks *st);
 
 t_stacks	*create_stack(int cnt, char **argv)
 {
@@ -31,6 +32,8 @@ t_stacks	*create_stack(int cnt, char **argv)
 			return (NULL);
 		}
 		add_to_stack(ptr, atoi(argv[i]));
+		ptr->a_size++;
+		ptr->size++;
 	}
 	if (!ft_lst_isdup(ptr->a))
 	{
@@ -38,25 +41,12 @@ t_stacks	*create_stack(int cnt, char **argv)
 		free(ptr);
 		return (NULL);
 	}
-	reload_stack_properties(ptr);
 	return (ptr);
 }
 
 void	add_to_stack(t_stacks *st, size_t val)
 {
 	ft_lstadd_back(&st->a, ft_lstnew((void *)val));
-}
-
-void	reload_stack_properties(t_stacks *st)
-{
-	st->a2 = st->a->next;
-	st->a_f = ft_lstlast(st->a);
-	st->a_size = ft_lstsize(st->a);
-	if (NULL == st->b)
-		return ;
-	st->b2 = st->b->next;
-	st->b_f = ft_lstlast(st->b);
-	st->b_size = ft_lstsize(st->b);
 }
 
 static t_stacks	*init_stacks(void)
@@ -70,11 +60,20 @@ static t_stacks	*init_stacks(void)
 	ptr->b = NULL;
 	ptr->a_size = 0;
 	ptr->b_size = 0;
-	ptr->a2 = NULL;
-	ptr->b2 = NULL;
-	ptr->a_f = NULL;
-	ptr->b_f = NULL;
+	ptr->size = 0;
 	init_stacks_funcs(&ptr);
+	ptr->func_dict[0] = "sa";
+	ptr->func_dict[1] = "sb";
+	ptr->func_dict[2] = "ss";
+	ptr->func_dict[3] = "pa";
+	ptr->func_dict[4] = "pb";
+	ptr->func_dict[5] = "ra";
+	ptr->func_dict[6] = "rb";
+	ptr->func_dict[7] = "rr";
+	ptr->func_dict[8] = "rra";
+	ptr->func_dict[9] = "rrb";
+	ptr->func_dict[10] = "rrr";
+	init_stacks_median(ptr);
 	return (ptr);
 }
 
@@ -85,4 +84,17 @@ static void	init_stacks_funcs(t_stacks **st)
 	(*st)->func[2] = swap_both;
 	(*st)->func[3] = push_a;
 	(*st)->func[4] = push_b;
+	(*st)->func[5] = rotate_a;
+	(*st)->func[6] = rotate_b;
+	(*st)->func[7] = rotate_both;
+	(*st)->func[8] = rrotate_a;
+	(*st)->func[9] = rrotate_b;
+	(*st)->func[10] = rrotate_both;
+}
+
+static void init_stacks_median(t_stacks *st)
+{
+	st->median = 0;
+	st->sigma[0] = 0;
+	st->sigma[1] = 0;
 }

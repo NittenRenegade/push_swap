@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 14:38:02 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/04 11:04:05 by coskelet         ###   ########.fr       */
+/*   Created: 2022/03/04 14:14:06 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/04 14:14:48 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_nbr(void *n)
+void	ft_print_str(void *s)
 {
-	ft_putnbr_fd((int)n, 0);
-	write(0, " ", 1);
+	ft_putstr_fd((char *)s, 0);
 }
-

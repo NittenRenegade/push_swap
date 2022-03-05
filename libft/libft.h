@@ -6,7 +6,7 @@
 /*   By: coskelet <coskelet@il-c2.msk.21-school.ru> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 13:08:06 by coskelet          #+#    #+#             */
-/*   Updated: 2022/02/26 12:52:25 by coskelet         ###   ########.fr       */
+/*   Updated: 2022/03/05 14:07:25 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,22 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_print_str(void *s);
 void	ft_print_nbr(void *n);
+void	ft_print_intarr(int ar[], size_t size);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstsublast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lst_shortclear(t_list **lst);
-int		ft_lst_issort(t_list *lst);
+int		ft_lst_issort(t_list *lst, short asc);
 int		ft_lst_isdup(t_list *lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstiter_reverse(t_list *lst, void (*f)(void *));
+size_t	ft_lst_getfpos(t_list *lst, void *value);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_sort_quick(int ar[], int low, int high);
 
 #endif
