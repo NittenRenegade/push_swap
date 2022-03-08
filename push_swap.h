@@ -6,12 +6,14 @@
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:50:51 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/05 13:31:56 by coskelet         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:29:55 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define PRINT_CMD 1
+# define SH_STACK 6
 # include "./libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
@@ -22,8 +24,13 @@ typedef struct s_stacks {
 	size_t		a_size;
 	size_t		b_size;
 	size_t		size;
-	int			sigma[2];
-	int			median;
+	long		sigma[2];
+	long		sigma2[2];
+	long		median;
+	long		sh_sigma[2];
+	long		sh_sigma2[2];
+	long		sh_median;
+	short		shrt;
 	void		(*func[11])(struct s_stacks *);
 	const char	*func_dict[11];
 }	t_stacks;
@@ -48,8 +55,22 @@ void		rrotate_a(t_stacks *st);
 void		rrotate_b(t_stacks *st);
 void		rrotate_both(t_stacks *st);
 void		start_push_swap(t_stacks *st);
+long		*get_sort_array(t_list *lst, size_t size, int *i);
+void		find_short_boundaries(t_stacks *st);
+void		need_to_ra(short *a, short *b, t_stacks *st);
+void		need_to_rra(short *a, t_stacks *st);
 short		a_a1(t_stacks *st);
 short		b_b1(t_stacks *st);
 short		a_al(t_stacks *st);
 short		b_bl(t_stacks *st);
+short		swap_head(t_stacks *st);
+short		move_back(t_stacks *st);
+short		move_rback(t_stacks *st);
+short		sigma2(t_stacks *st);
+short		r_side(t_stacks *st);
+short		sh_sigma2(t_stacks *st);
+short		sh_r_side(t_stacks *st);
+short		shrt(t_stacks *st);
+void		move_to_b(t_stacks *st);
+void		move_to_a(t_stacks *st);
 #endif

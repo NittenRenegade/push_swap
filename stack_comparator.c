@@ -14,13 +14,19 @@
 
 short	a_a1(t_stacks *st)
 {
-	int	a;
-	int	a1;
+	long	a;
+	long	a1;
 
 	if (NULL == st->a || NULL == st->a->next)
 		return (0);
-	a = (int)st->a->content;
-	a1 = (int)st->a->next->content;
+	a = (long)st->a->content;
+	a1 = (long)st->a->next->content;
+	if (st->shrt || st->a_size <= SH_STACK)
+	{
+		find_short_boundaries(st);
+		if (a == st->sh_sigma2[0])
+			move_back(st);
+	}
 	if (a > a1)
 		return (1);
 	else
@@ -29,13 +35,13 @@ short	a_a1(t_stacks *st)
 
 short	b_b1(t_stacks *st)
 {
-	int	b;
-	int	b1;
+	long	b;
+	long	b1;
 
 	if (NULL == st->b || NULL == st->b->next)
 		return (0);
-	b = (int)st->b->content;
-	b1 = (int)st->b->next->content;
+	b = (long)st->b->content;
+	b1 = (long)st->b->next->content;
 	if (b < b1)
 		return (1);
 	else
@@ -44,13 +50,13 @@ short	b_b1(t_stacks *st)
 
 short	a_al(t_stacks *st)
 {
-	int	a;
-	int	al;
+	long	a;
+	long	al;
 
 	if (NULL == st->a || NULL == st->a->next)
 		return (0);
-	a = (int)st->a->content;
-	al = (int)ft_lstlast(st->a)->content;
+	a = (long)st->a->content;
+	al = (long)ft_lstlast(st->a)->content;
 	if (a > al)
 		return (1);
 	else
@@ -59,13 +65,13 @@ short	a_al(t_stacks *st)
 
 short	b_bl(t_stacks *st)
 {
-	int	b;
-	int	bl;
+	long	b;
+	long	bl;
 
 	if (NULL == st->b || NULL == st->b->next)
 		return (0);
-	b = (int)st->b->content;
-	bl = (int)ft_lstlast(st->b)->content;
+	b = (long)st->b->content;
+	bl = (long)ft_lstlast(st->b)->content;
 	if (b < bl)
 		return (1);
 	else

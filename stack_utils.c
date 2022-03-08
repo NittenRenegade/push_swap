@@ -6,7 +6,7 @@
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:25:57 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/05 13:38:11 by coskelet         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:01:53 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void	stack_clean(t_stacks **st)
 
 void	print_stacks(t_stacks *st)
 {
-	ft_lstiter_reverse(st->a, ft_print_nbr);
-	write(1, "||", 1);
-	ft_lstiter(st->b, ft_print_nbr);
+	if (PRINT_CMD)
+	{
+		ft_lstiter_reverse(st->a, ft_print_nbr);
+		write(1, "||", 1);
+		ft_lstiter(st->b, ft_print_nbr);
+	}
 }

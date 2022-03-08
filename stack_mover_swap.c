@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*   stack_mover_swap.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 14:38:02 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/04 11:04:05 by coskelet         ###   ########.fr       */
+/*   Created: 2022/03/08 16:08:04 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/08 16:08:07 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_print_nbr(void *n)
+short	swap_head(t_stacks *st)
 {
-	ft_putnbr_fd((int)n, 1);
-	write(1, " ", 1);
+	if (a_a1(st) && b_b1(st))
+		exec_cmd(st, "ss", 1);
+	else if (a_a1(st))
+		exec_cmd(st, "sa", 1);
+	else if (b_b1(st))
+		exec_cmd(st, "sb", 1);
+	else
+		return (0);
+	print_stacks(st);
+	return (1);
 }
-

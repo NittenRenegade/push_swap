@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_move_to.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/07 17:15:49 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/07 17:46:14 by coskelet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static short	try_put_b(t_stacks *st)
+{
+
+	if (move_rback(st))
+		return(0);
+	if (move_back(st))
+		return (0);
+	exec_cmd(st, "pb", 1);
+	find_short_boundaries(st);
+	return (1);
+}
+
+void	move_to_b(t_stacks *st)
+{
+	int	i;
+
+	i = 0;
+	while (!try_put_b(st))
+		i++;
+	return ;
+}
+
+static short	try_put_a(t_stacks *st)
+{
+	long	tmp_b;
+	long	tmp_bl;
+
+	tmp_b = (long)st->b->content;
+	tmp_bl = (long)ft_lstlast(st->b)->content;
+	if (tmp_b < tmp_bl
+		|| (st->b_size > 3 && sigma2(st) && tmp_b <= st->sigma2[0]))
+	{
+		exec_cmd(st, "rb", 1);
+		print_stacks(st);
+		return (0);
+	}
+	exec_cmd(st, "pa", 1);
+	return (1);
+}
+
+void	move_to_a(t_stacks *st)
+{
+	int	i;
+
+	i = 0;
+	while (!try_put_a(st))
+		i++;
+	return ;
+}

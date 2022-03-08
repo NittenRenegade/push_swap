@@ -1,28 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstissort.c                                     :+:      :+:    :+:   */
+/*   boundaries_comparator.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 09:36:58 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/05 14:30:35 by coskelet         ###   ########.fr       */
+/*   Created: 2022/03/08 13:54:48 by coskelet          #+#    #+#             */
+/*   Updated: 2022/03/08 13:54:50 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_lst_issort(t_list *lst, short asc)
+short	sigma2(t_stacks *st)
 {
-	if (!lst)
+	if (st->sigma2[0] != st->sigma2[1])
 		return (1);
-	while (lst->next)
-	{
-		if (asc && (long)lst->content > (long)lst->next->content)
-			return (0);
-		else if (!asc && (long)lst->content < (long)lst->next->content)
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
+	else
+		return (0);
+}
+
+short	sh_sigma2(t_stacks *st)
+{
+	if (st->sh_sigma2[0] != st->sh_sigma2[1])
+		return (1);
+	else
+		return (0);
+}
+
+short	sh_r_side(t_stacks *st)
+{
+	if (st->a_size > SH_STACK / 2)
+		return (1);
+	else
+		return (0);
+}
+
+short	r_side(t_stacks *st)
+{
+	if (st->a_size > st->size / 2)
+		return (1);
+	else
+		return (0);
 }

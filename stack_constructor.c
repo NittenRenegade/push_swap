@@ -6,7 +6,7 @@
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:50:06 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/05 10:28:00 by coskelet         ###   ########.fr       */
+/*   Updated: 2022/03/05 16:44:50 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_stacks	*init_stacks(void);
 static void		init_stacks_funcs(t_stacks **st);
-static void 	init_stacks_median(t_stacks *st);
+static void		init_stacks_median(t_stacks *st);
 
 t_stacks	*create_stack(int cnt, char **argv)
 {
@@ -92,9 +92,17 @@ static void	init_stacks_funcs(t_stacks **st)
 	(*st)->func[10] = rrotate_both;
 }
 
-static void init_stacks_median(t_stacks *st)
+static void	init_stacks_median(t_stacks *st)
 {
 	st->median = 0;
 	st->sigma[0] = 0;
 	st->sigma[1] = 0;
+	st->sigma2[0] = 0;
+	st->sigma2[1] = 0;
+	st->shrt = 0;
+	st->sh_median = 0;
+	st->sh_sigma[0] = 0;
+	st->sh_sigma[1] = 0;
+	st->sh_sigma2[0] = 0;
+	st->sh_sigma2[1] = 0;
 }

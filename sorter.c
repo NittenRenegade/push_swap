@@ -6,13 +6,13 @@
 /*   By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 15:44:40 by coskelet          #+#    #+#             */
-/*   Updated: 2022/03/05 14:10:45 by coskelet         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:47:49 by coskelet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_boundaries(t_stacks *st);
+static void	find_boundaries(t_stacks *st);
 
 int	main(int argc, char **argv)
 {
@@ -30,35 +30,67 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	find_boundaries(st);
-
-	if (ft_lst_issort(st->a, 1))
-		return (0);
+	find_short_boundaries(st);
+	start_push_swap(st);
 	return (0);
 }
 
-void	find_boundaries(t_stacks *st)
+long	*get_sort_array(t_list *lst, size_t size, int *i)
 {
-	int		*ar;
-	int		i;
-	t_list	*tmp;
+	long	*ar;
 
-	ar = malloc(sizeof(int) * st->a_size);
-	tmp = st->a;
-	i = 0;
-	while (tmp)
+	ar = malloc(sizeof(long) * size);
+	*i = 0;
+	while (lst)
 	{
-		ar[i] = (int)tmp->content;
-		i++;
-		tmp = tmp->next;
+		ar[*i] = (long)lst->content;
+		(*i)++;
+		lst = lst->next;
 	}
-	ft_sort_quick(ar, 0, i - 1);
-	st->sigma[0] = ar[(int)(i / 3)];
-	st->median = ar[(int)(i / 2)];
-	st->sigma[1] = ar[(int)(i / 3 * 2)];
-	start_push_swap(st);
-	if (NULL == st->b && ft_lst_issort(st->a, 1))
-		ft_putstr_fd("OK\n", 0);
-	else
-		ft_putstr_fd("KO\n", 0);
+	ft_sort_quick(ar, 0, *i - 1);
+	return (ar);
+}
+
+static void	find_boundaries(t_stacks *st)
+{
+	long	*ar;
+	int		i;
+
+	ar = get_sort_array(st->a, st->a_size, &i);
+	st->median = ar[(long)(i / 2)];
+	st->sigma[0] = ar[(long)(i / 3)];
+	st->sigma[1] = ar[(long)(i - (i / 3))];
+	if (i >= SH_STACK)
+	{
+		st->sigma2[0] = ar[(long) (i / SH_STACK)];
+		st->sigma2[1] = ar[(long) (i - (i / SH_STACK))];
+	}
+	if (i <= SH_STACK)
+		st->shrt = 1;
 	free(ar);
+}
+
+void	find_short_boundaries(t_stacks *st)
+{
+	long	*ar;
+	int 	i;
+
+	if ((st->size < SH_STACK && st->size == st->a_size)
+		|| SH_STACK == st->a_size)
+	{
+		ar = get_sort_array(st->a, st->a_size, &i);
+		st->sh_median = ar[(long) (i / 2)];
+		st->sh_sigma[0] = ar[(long) (i / 3)];
+		st->sh_sigma[1] = ar[(long) (i - (i / 3))];
+		if (i >= SH_STACK)
+		{
+			st->sh_sigma2[0] = ar[(long) (i / SH_STACK)];
+			st->sh_sigma2[1] = ar[(long) (i - (i / SH_STACK))];
+		} else if (i < SH_STACK && i >= 5)
+		{
+			st->sh_sigma2[0] = ar[0];
+			st->sh_sigma2[1] = ar[i - 1];
+		}
+		free(ar);
+	};
 }

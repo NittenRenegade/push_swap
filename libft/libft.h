@@ -88,6 +88,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstiter_reverse(t_list *lst, void (*f)(void *));
 size_t	ft_lst_getfpos(t_list *lst, void *value);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void	ft_sort_quick(int ar[], int low, int high);
+void	ft_sort_quick(long ar[], long low, long high);
 
 #endif

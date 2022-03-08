@@ -6,7 +6,7 @@
 #    By: coskelet <coskelet@student.21-schoo>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 15:37:41 by coskelet          #+#    #+#              #
-#    Updated: 2022/03/05 12:06:36 by coskelet         ###   ########.fr        #
+#    Updated: 2022/03/07 17:24:39 by coskelet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME	= push_swap
 
 HEADER	= push_swap.h
 
-SRCS	= sorter.c push_swap_engine.c \
-		stack_constructor.c stack_utils.c stack_comparator.c \
-		move_swap.c move_push.c move_rotate.c move_rrotate.c 
+SRCS	= sorter.c				boundaries_comparator.c \
+		push_swap_engine.c		push_swap_ra.c		push_swap_rra.c \
+		stack_constructor.c		stack_utils.c		stack_comparator.c \
+		stack_mover_back.c 		stack_mover_swap.c	stack_move_to.c \
+		move_swap.c		move_push.c		move_rotate.c		move_rrotate.c 
 
-SRC_CHK	= checker.c stack_constructor.c stack_utils.c \
-		move_swap.c move_push.c move_rotate.c move_rrotate.c
+SRC_CHK	= checker.c		stack_constructor.c		stack_utils.c \
+		move_swap.c		move_push.c		move_rotate.c		move_rrotate.c
 
 LIBFT	= libft
 

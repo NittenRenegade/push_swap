@@ -12,19 +12,19 @@
 
 #include "libft.h"
 
-static void	swap(int *a, int *b)
+static void	swap(long *a, long *b)
 {
-	int	t;
+	long	t;
 
 	t = *a;
 	*a = *b;
 	*b = t;
 }
 
-static int	partition(int ar[], int low, int high)
+static int	partition(long ar[], long low, long high)
 {
-	int	h;
-	int	j;
+	long	h;
+	long	j;
 
 	h = (low - 1);
 	j = low;
@@ -41,7 +41,7 @@ static int	partition(int ar[], int low, int high)
 	return (h + 1);
 }
 
-void	ft_sort_quick(int ar[], int low, int high)
+void	ft_sort_quick(long ar[], long low, long high)
 {
 	int	pivot;
 
