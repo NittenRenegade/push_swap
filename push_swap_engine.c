@@ -17,7 +17,8 @@ static void	sort_stack_b(t_stacks *st)
 	int	i;
 
 	i = 0;
-	while (!ft_lst_issort(st->b, 0) || st->b_size > 0)
+	while (!ft_lst_issort(st->b, 0)
+		|| (st->b_size > 0 && ft_lst_issort(st->a, 1)))
 	{
 		while (move_back(st) || swap_head(st))
 			swap_head(st);
@@ -63,6 +64,6 @@ short	sort_stack_a(t_stacks *st)
 
 void	start_push_swap(t_stacks *st)
 {
-	while (NULL == st->b && !ft_lst_issort(st->a, 1))
+	while (NULL != st->b || !ft_lst_issort(st->a, 1))
 		sort_stack_a(st);
 }

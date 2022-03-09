@@ -26,6 +26,7 @@ typedef struct s_stacks {
 	size_t		size;
 	long		sigma[2];
 	long		sigma2[2];
+	size_t 		pos_sigma2[2];
 	long		median;
 	long		sh_sigma[2];
 	long		sh_sigma2[2];
@@ -56,6 +57,7 @@ void		rrotate_b(t_stacks *st);
 void		rrotate_both(t_stacks *st);
 void		start_push_swap(t_stacks *st);
 long		*get_sort_array(t_list *lst, size_t size, int *i);
+void		find_boundaries(t_stacks *st);
 void		find_short_boundaries(t_stacks *st);
 void		need_to_ra(short *a, short *b, t_stacks *st);
 void		need_to_rra(short *a, t_stacks *st);

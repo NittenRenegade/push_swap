@@ -14,7 +14,7 @@ NAME	= push_swap
 
 HEADER	= push_swap.h
 
-SRCS	= sorter.c				boundaries_comparator.c \
+SRCS	= sorter.c		boundaries_comparator.c		boundaries_finder.c \
 		push_swap_engine.c		push_swap_ra.c		push_swap_rra.c \
 		stack_constructor.c		stack_utils.c		stack_comparator.c \
 		stack_mover_back.c 		stack_mover_swap.c	stack_move_to.c \

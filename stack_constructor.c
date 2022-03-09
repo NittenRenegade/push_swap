@@ -97,6 +97,8 @@ static void	init_stacks_median(t_stacks *st)
 	st->median = 0;
 	st->sigma[0] = 0;
 	st->sigma[1] = 0;
+	st->pos_sigma2[0] = 0;
+	st->pos_sigma2[1] = 0;
 	st->sigma2[0] = 0;
 	st->sigma2[1] = 0;
 	st->shrt = 0;

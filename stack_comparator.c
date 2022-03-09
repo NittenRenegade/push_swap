@@ -21,11 +21,13 @@ short	a_a1(t_stacks *st)
 		return (0);
 	a = (long)st->a->content;
 	a1 = (long)st->a->next->content;
-	if (st->shrt || st->a_size <= SH_STACK)
+	if ((st->shrt || st->a_size <= SH_STACK) && st->a_size > 3)
 	{
 		find_short_boundaries(st);
-		if (a == st->sh_sigma2[0])
+		if (a >= st->sh_sigma2[1])
 			move_back(st);
+		a = (long)st->a->content;
+		a1 = (long)st->a->next->content;
 	}
 	if (a > a1)
 		return (1);
